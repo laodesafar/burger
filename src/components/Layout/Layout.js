@@ -1,6 +1,6 @@
-import React from "./node_modules/react";
+import React from "react";
 
-import Aux from "../../hoc/Aux";
+import Aux from "../../hoc/Bantu";
 
 const layout = props => (
   <Aux>
