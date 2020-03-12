@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
+
 import classes from "./bumbuBurger.module.css";
 
 const bumbuBurger = props => {
@@ -33,6 +36,10 @@ const bumbuBurger = props => {
     }
 
     return bumbu;
+};
+
+bumbuBurger.propTyoes = {
+    type: PropTypes.string.isRequired
 };
 
 export default bumbuBurger;
