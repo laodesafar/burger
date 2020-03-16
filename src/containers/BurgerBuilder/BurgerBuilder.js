@@ -19,8 +19,20 @@ class BurgerBuilder extends Component {
       cheese: 0,
       meat: 0
     },
-    totalHarga: 40000
+    totalHarga: 40000,
+    terbayar: false
   };
+
+  updateStateTerbayar(bumbu) {
+    const tambah = Object.keys(bumbu)
+      .map(igKey => {
+        return bumbu[igKey];
+      })
+      .reduce((tambah, el) => {
+        return tambah + el;
+      }, 0);
+    this.setState({ terbayar: tambah > 0 });
+  }
 
   addBumbuHandler = type => {
     const oldCount = this.state.bumbu[type];
@@ -33,6 +45,7 @@ class BurgerBuilder extends Component {
     const oldPrice = this.state.totalHarga;
     const newPrice = oldPrice + hargaAdditon;
     this.setState({ totalHarga: newPrice, bumbu: updatedBumbu });
+    this.updateStateTerbayar(updatedBumbu);
   };
 
   removeBumbuHandler = type => {
@@ -49,6 +62,7 @@ class BurgerBuilder extends Component {
     const oldPrice = this.state.totalHarga;
     const newPrice = oldPrice - hargaDeduction;
     this.setState({ totalHarga: newPrice, bumbu: updatedBumbu });
+    this.updateStateTerbayar(updatedBumbu);
   };
 
   render() {
@@ -65,6 +79,7 @@ class BurgerBuilder extends Component {
           bumbuAdded={this.addBumbuHandler}
           bumbuRemoved={this.removeBumbuHandler}
           disabled={disableInfo}
+          terbayar={this.state.terbayar}
           harga={this.state.totalHarga}
         />
       </Aux>

@@ -28,7 +28,9 @@ const buildControls = (props) => (
           removed = {() => props.bumbuRemoved(ctrl.type)}
           disabled= {props.disabled[ctrl.type] } />
         ))}
-
+        <button
+        className={classes.OrderButton}
+        disabled={!props.terbayar}>PESAN SEKARANG</button>
     </div>
 );
 
