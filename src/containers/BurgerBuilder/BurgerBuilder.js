@@ -47,7 +47,7 @@ class BurgerBuilder extends Component {
     updatedBumbu[type] = updatedCount;
     const hargaDeduction = BUMBU_HARGA[type];
     const oldPrice = this.state.totalHarga;
-    const newPrice = oldPrice + hargaDeduction;
+    const newPrice = oldPrice - hargaDeduction;
     this.setState({ totalHarga: newPrice, bumbu: updatedBumbu });
   };
 
@@ -65,6 +65,7 @@ class BurgerBuilder extends Component {
           bumbuAdded={this.addBumbuHandler}
           bumbuRemoved={this.removeBumbuHandler}
           disabled={disableInfo}
+          harga={this.state.totalHarga}
         />
       </Aux>
     );
