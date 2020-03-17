@@ -22,7 +22,8 @@ class BurgerBuilder extends Component {
       meat: 0
     },
     totalHarga: 40000,
-    terbayar: false
+    terbayar: false,
+    terbayarkan: false
   };
 
   updateStateTerbayar(bumbu) {
@@ -67,6 +68,14 @@ class BurgerBuilder extends Component {
     this.updateStateTerbayar(updatedBumbu);
   };
 
+  terbayarkanHandler = () => {
+    this.setState({terbayarkan: true});
+  }
+
+  terbayarkanCancelHandler = () => {
+    this.setState({terbayarkan: false});
+  }
+
   render() {
     const disableInfo = {
       ...this.state.bumbu
@@ -76,7 +85,7 @@ class BurgerBuilder extends Component {
     }
     return (
       <Aux>
-        <Modal>
+        <Modal show={this.state.terbayarkan} modalClosed={this.terbayarkanCancelHandler}>
           <OrderSummary bumbu={this.state.bumbu}/>
         </Modal>
         <Burger bumbu={this.state.bumbu} />
@@ -85,6 +94,7 @@ class BurgerBuilder extends Component {
           bumbuRemoved={this.removeBumbuHandler}
           disabled={disableInfo}
           terbayar={this.state.terbayar}
+          terpesan={this.terbayarkanHandler}
           harga={this.state.totalHarga}
         />
       </Aux>
