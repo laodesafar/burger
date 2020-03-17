@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Aux from "../../hoc/Bantu";
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
+import Modal from "../../components/UI/Modal/Modal";
+import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 
 const BUMBU_HARGA = {
   salad: 5000,
@@ -74,6 +76,9 @@ class BurgerBuilder extends Component {
     }
     return (
       <Aux>
+        <Modal>
+          <OrderSummary bumbu={this.state.bumbu}/>
+        </Modal>
         <Burger bumbu={this.state.bumbu} />
         <BuildControls
           bumbuAdded={this.addBumbuHandler}
