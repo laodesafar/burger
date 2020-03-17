@@ -19,6 +19,8 @@ const orderSummary = (props) => {
                 {bumbuSummary}
             </ul>
             <p>Lanjutkan pembayaran ?</p>
+            <button>Batalkan</button>
+            <button>Lanjutkan</button>
         </Aux>
     );
 
