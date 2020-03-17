@@ -76,6 +76,10 @@ class BurgerBuilder extends Component {
     this.setState({terbayarkan: false});
   }
 
+  terbayarkanContinueHandler = () => {
+    alert('Anda Melanjutkan Pembayaran');
+  }
+
   render() {
     const disableInfo = {
       ...this.state.bumbu
@@ -86,7 +90,10 @@ class BurgerBuilder extends Component {
     return (
       <Aux>
         <Modal show={this.state.terbayarkan} modalClosed={this.terbayarkanCancelHandler}>
-          <OrderSummary bumbu={this.state.bumbu}/>
+          <OrderSummary
+            bumbu={this.state.bumbu}
+            terbayarkanCancel ={this.terbayarkanCancelHandler}
+            terbayarkanContinue = {this.terbayarkanContinueHandler} />
         </Modal>
         <Burger bumbu={this.state.bumbu} />
         <BuildControls

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Aux from '../../../hoc/Bantu';;
+import Aux from '../../../hoc/Bantu';
+import Button from '../../UI/Button/Button';
 
 const orderSummary = (props) => {
     const bumbuSummary = Object.keys(props.bumbu)
@@ -19,8 +20,8 @@ const orderSummary = (props) => {
                 {bumbuSummary}
             </ul>
             <p>Lanjutkan pembayaran ?</p>
-            <button>Batalkan</button>
-            <button>Lanjutkan</button>
+            <Button btnType="Danger" clicked={props.terbayarkanCancel}>Batalkan</Button>
+            <Button btnType="Success" clicked={props.terbayarkanContinue}>Lanjutkan</Button>
         </Aux>
     );
 
